@@ -1,3 +1,4 @@
+import {PropTypes} from 'prop-types'
 import Square from './Square'
 export default function WinnerModal({winner, resetGame}) {
   if (winner === null) return null;
@@ -15,4 +16,7 @@ export default function WinnerModal({winner, resetGame}) {
     </section>
   );
 }
-
+WinnerModal.propTypes = {
+  winner: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  resetGame: PropTypes.func.isRequired,
+};

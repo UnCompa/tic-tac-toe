@@ -9,10 +9,10 @@ import Music from "./sound/music.mp3";
 import Tab from "./sound/tab.wav";
 import Win from "./sound/win.wav";
 function App() {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [play, { stop }] = useSound(Music, {
-    volume: 0.3,
+    volume: 0.5,
   });
+  const [isPlaying, setIsPlaying] = useState(false);
   const toggleAudio = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -24,13 +24,13 @@ function App() {
       console.error("Error al acceder al micrófono: ", error);
     }
   };
-
+  
   const stopAudio = () => {
     stop();
     setIsPlaying(false);
   };
   const [played] = useSound(Tab, {
-    volume: 0.3,
+    volume: 0.5,
   });
   const [winSound] = useSound(Win)
   //Aqui se define la logica del juego
@@ -115,8 +115,8 @@ function App() {
         </section>
         <section className="Info">
           <h3>Puntaje</h3>
-          <span><strong>Jugador1:</strong> {playerOne}</span>
-          <span><strong>Jugador2:</strong> {playerTwo}</span>
+          <span className='player1'>Jugador1: {playerOne}</span>
+          <span className='player2'>Jugador2: {playerTwo}</span>
         </section>
       </footer>
     </>
